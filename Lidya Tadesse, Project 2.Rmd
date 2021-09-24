@@ -1,0 +1,36 @@
+---
+title: "LT_Project 2"
+author: "Lidya Tadesse"
+date: "9/23/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+``` {r}
+#install.packages('tidyverse', repos = "http://cran.us.r-project.org")
+#install.packages('tidytuesdayR', repos = "http://cran.us.r-project.org")
+
+#tuesdata <- tidytuesdayR::tt_load('2020-01-07')
+#rainfall <- tuesdata$rainfall
+#temperature <- tuesdata$temperature
+
+library(here)
+if(!file.exists(here("data","tuesdata_rainfall.RDS"))){
+  tuesdata <- tidytuesdayR::tt_load('2020-01-07')
+  rainfall <- tuesdata$rainfall
+  temperature <- tuesdata$temperature
+  
+  # save the files to RDS objects
+  saveRDS(tuesdata$rainfall, file= here("data","tuesdata_rainfall.RDS"))
+  saveRDS(tuesdata$temperature, file= here("data","tuesdata_temperature.RDS"))
+}
+
+rainfall <- readRDS(here("data","tuesdata_rainfall.RDS"))
+temperature <- readRDS(here("data","tuesdata_temperature.RDS"))
+```
+
+## R Markdown
+
